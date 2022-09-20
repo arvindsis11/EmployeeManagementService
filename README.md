@@ -11,11 +11,11 @@
 
 ## Explanation:
 
-1. @ManyToOne indicates that Many student tuples can refer to one College tuple.
+1. @ManyToOne indicates that Many employess tuples can refer to one address tuple.
 Also note that we have provided optional=false means this relationship becomes mandatory , no student row can be saved without a College tuple reference.
 
 
-@JoinColumn says that there is a column c_id(i.e. college id) in Employee table which will refer(foreign key) to primary key of the Address table.
+@JoinColumn says that there is a column add_id(i.e. college id) in Employee table which will refer(foreign key) to primary key of the Address table.
 In this example only Student to Address entity navigation is possible. Not viceversa.
 In practice, however, you are free to use query language to find all the employees for a given address id.\
 cascade = CascadeType.ALL indicates that, once we start any operation(CURD) on student table , it will reflects to Address table.\
@@ -62,3 +62,20 @@ note: use exact version. in case of any error add this line to application.prope
 spring.mvc.pathmatch.matching-strategy = ANT_PATH_MATCHER
 ```
 error might occure if you use swagger v3 or above because it doesn't supports matcher.
+## note: To reverse mapping use following:/
+Employee.java
+```java
+@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "fk_emp_id", referencedColumnName = "emp_id")
+	private List<EmpAddress> employees;
+```
+EmpAddress.java
+```java
+@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "fk_add_id")
+	private EmpAddress college;
+ ```
+ ##PostMan.config
+ ![image](https://user-images.githubusercontent.com/57572062/191229014-357ac92a-32cf-47a0-84e7-c65c19c621d1.png)
+
