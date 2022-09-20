@@ -1,15 +1,13 @@
-## #Spring Boot ManyToOne Unidirectional Mapping(Student --> College) Using Annotations
+*****************************************************************## Employee Management Api service***********************************************************
+## #Spring Boot ManyToOne Unidirectional Mapping(Employee Management Api service) Using Annotations
 
 1. In Many-To-One Unidirectional mapping, one table has a foreign key column that references the primary key of associated table.
-   By Unidirectional relationship means only one side navigation is possible (STUDENT to COLLEGE in this example).
-
-2. Many students can enroll at one College. And one College can have many students.
-
+   By Unidirectional relationship means only one side navigation is possible (Employees to addresses in this example).
 ## Student.java,Faculty.java,Employee.java
 
 @ManyToOne(optional = false,cascade = CascadeType.ALL)\
-@JoinColumn(name = "c_id")#college_id\
-private University university;
+@JoinColumn(name = "add_id")#add_id\
+
 
 ## Explanation:
 
@@ -17,10 +15,10 @@ private University university;
 Also note that we have provided optional=false means this relationship becomes mandatory , no student row can be saved without a College tuple reference.
 
 
-@JoinColumn says that there is a column c_id(i.e. college id) in Student table which will refer(foreign key) to primary key of the College table.
-In this example only Student to College entity navigation is possible. Not viceversa.
-In practice, however, you are free to use query language to find all the student for a given College.\
-cascade = CascadeType.ALL indicates that, once we start any operation(CURD) on student table , it will reflects to College table.\
+@JoinColumn says that there is a column c_id(i.e. college id) in Employee table which will refer(foreign key) to primary key of the Address table.
+In this example only Student to Address entity navigation is possible. Not viceversa.
+In practice, however, you are free to use query language to find all the employees for a given address id.\
+cascade = CascadeType.ALL indicates that, once we start any operation(CURD) on student table , it will reflects to Address table.\
 Please refer to PostManSpecs.txt for more info.
 
 # other specifications:
