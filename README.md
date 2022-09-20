@@ -3,7 +3,7 @@
 
 1. In Many-To-One Unidirectional mapping, one table has a foreign key column that references the primary key of associated table.
    By Unidirectional relationship means only one side navigation is possible (Employees to addresses in this example).
-## Student.java,Faculty.java,Employee.java
+## Employee.java,EmpAddress.java,Employee.java
 
 @ManyToOne(optional = false,cascade = CascadeType.ALL)\
 @JoinColumn(name = "add_id")#add_id\
