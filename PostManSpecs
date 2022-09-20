@@ -1,0 +1,15 @@
+//json data for addressController:localhost:8080/colleges/
+{"add_id":1,"add_street":"vishnupuri",
+ "employees":[
+    {
+        "emp_name":"arvind"
+    },
+     {
+        "emp_name":"xyz"
+    },
+     {
+        "emp_name":"abc"
+    }
+    ]
+}
+//similarly we can use another rest-api endpoints
